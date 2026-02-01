@@ -6,14 +6,14 @@
 <title>Howell & April Wedding</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Great+Vibes&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/invitation.css">
+<link rel="stylesheet" href="/assets/invitation.css">
 </head>
 
 <body>
 
   <div class="envelope-wrapper">
     <div class="envelope" id="envelope">
-      <div class="flap"></div>
+      <d9iv class="flap"></div>
       <div class="base">
         <div class="names">
           <div class="line1">The Wedding Celebration of</div>
@@ -24,32 +24,6 @@
       <div class="flower"></div>
     </div>
   </div>
-  
-  
-
-<script>
-const envelope = document.getElementById("envelope");
-const flower = document.querySelector(".flower");
-const names = document.querySelector(".names");
-
-envelope.addEventListener("click", () => {
-  envelope.classList.add("open");      // flap opens
-  flower.classList.add("hide-flower"); // hide flower
-
-  // Names appear after 1s (flap animation delay)
-  setTimeout(() => {
-    names.style.opacity = "1";
-    names.style.transform = "translate(-50%, -50%)";
-  }, 1000);
-
-  // Redirect after 3 seconds
-  setTimeout(() => {
-    window.location.href = "/invitation/";
-  }, 2500);
-});
-
-  </script>
-  
-<script type="text/javascript" src="../assets/invitation.js"></script>
+<script type="text/javascript" src="/assets/invitation.js"></script>
 </body>
 </html>
