@@ -14,6 +14,6 @@ envelope.addEventListener("click", () => {
 
   // Redirect after 3 seconds
   setTimeout(() => {
-    window.location.href = "invitation/index.html";
+    window.location.href = "/invitation/";
   }, 2500);
 });
