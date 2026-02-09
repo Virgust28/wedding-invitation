@@ -208,33 +208,3 @@ window.addEventListener('resize', () => {
 if (sessionStorage.getItem("envelopeOpened") !== "true") {
   window.location.href = "../index.html";
 }
-
-const sections = document.querySelectorAll('.section');
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('show');
-    }
-  });
-}, {
-  threshold: 0.2
-});
-
-sections.forEach(section => observer.observe(section));
-
-
-
-
-function updateSectionPadding() {
-  const navHeight = nav.offsetHeight;
-  sections.forEach(section => {
-    section.style.paddingTop = navHeight + "px";
-  });
-}
-
-// Initial call
-updateSectionPadding();
-
-// Update on resize
-window.addEventListener('resize', updateSectionPadding);
