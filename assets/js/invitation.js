@@ -1,3 +1,8 @@
+if (localStorage.getItem("envelopeOpened") !== "true") {
+  window.location.href = "../index.html"; 
+}
+
+localStorage.removeItem("envelopeOpened");
 // Hamburger menu
 const menuIcon = document.getElementById("menu-icon");
 const navLinks = document.getElementById("nav-links");
@@ -192,10 +197,6 @@ btn.addEventListener("click", (e) => {
     );
   });
 
-  if (sessionStorage.getItem("envelopeOpened") !== "true") {
-    window.location.href = "../index.html"; 
-  }
-
   const sections = document.querySelectorAll('.section');
 
   const observer = new IntersectionObserver(entries => {
@@ -207,21 +208,3 @@ btn.addEventListener("click", (e) => {
   }, { threshold: 0.2 });
 
   sections.forEach(section => observer.observe(section));
-
-
-
-
-function updateSectionPadding() {
-  const navHeight = nav.offsetHeight;
-  sections.forEach(section => {
-    section.style.paddingTop = navHeight + "px";
-  });
-}
-
-// Initial call
-updateSectionPadding();
-
-// Update on resize
-window.addEventListener('resize', updateSectionPadding);
-
-  

@@ -16,10 +16,10 @@ envelope.addEventListener("click", () => {
     names.style.transform = "translate(-50%, -50%)";
   }, 1000);
 
-  sessionStorage.setItem("envelopeOpened", "true");
+  localStorage.setItem("envelopeOpened", "true");
 
   setTimeout(() => {
-    window.location.href = "/invitation/";
+    window.location.href = "invitation/index.html";
   }, 2500);
 });
 
