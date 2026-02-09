@@ -132,24 +132,20 @@ function autoScroll2() {
 }
 
 autoScroll2();
-
 const music = document.getElementById("bg-music");
 const btn = document.getElementById("music-btn");
 
 let isPlaying = false;
 let heartbeatInterval;
 
-// BPM
-const BPM = 120;
-const interval = (60 / BPM) * 1000;
-
+// --- Heartbeat animation ---
 function startHeartbeat() {
   if (heartbeatInterval) clearInterval(heartbeatInterval);
+  const BPM = 120;
+  const interval = (60 / BPM) * 1000;
   heartbeatInterval = setInterval(() => {
     btn.style.transform = "scale(1.3)";
-    setTimeout(() => {
-      btn.style.transform = "scale(1)";
-    }, interval / 2);
+    setTimeout(() => { btn.style.transform = "scale(1)"; }, interval / 2);
   }, interval);
 }
 
@@ -158,37 +154,64 @@ function stopHeartbeat() {
   btn.style.transform = "scale(1)";
 }
 
-// ▶️ play music after first interaction
-function initMusic() {
+// --- Play / Pause Music ---
+function playMusic() {
   music.play().then(() => {
     isPlaying = true;
     btn.textContent = "❚❚";
     startHeartbeat();
+    localStorage.setItem("musicPlaying", "true");
   }).catch(() => {
-    // autoplay blocked (just in case)
+    // fallback if mobile blocks autoplay
+    btn.textContent = "▶";
   });
+}
+
+function pauseMusic() {
+  music.pause();
+  isPlaying = false;
+  btn.textContent = "▶";
+  stopHeartbeat();
+  localStorage.setItem("musicPlaying", "false");
+}
+
+// --- Button Toggle ---
+btn.addEventListener("click", (e) => {
+  e.stopPropagation();
+  if (isPlaying) pauseMusic();
+  else playMusic();
+});
+
+// --- Initialize Music with Hidden Gesture ---
+function initMusic() {
+  playMusic();
+  // Mark that user gave initial gesture
+  localStorage.setItem("gestureDone", "true");
 
   document.removeEventListener("click", initMusic);
   document.removeEventListener("touchstart", initMusic);
 }
 
-document.addEventListener("click", initMusic);
-document.addEventListener("touchstart", initMusic);
+// --- Page Load Logic ---
+window.addEventListener("load", () => {
+  const wasPlaying = localStorage.getItem("musicPlaying") === "true";
+  const gestureDone = localStorage.getItem("gestureDone") === "true";
 
-// Button toggle
-btn.addEventListener("click", (e) => {
-  e.stopPropagation(); // prevent double-trigger
-
-  if (isPlaying) {
-    music.pause();
-    btn.textContent = "▶";
-    stopHeartbeat();
+  if (wasPlaying) {
+    // If the user gave gesture before, attempt autoplay
+    if (!gestureDone) {
+      // Wait for first gesture
+      document.addEventListener("click", initMusic, { once: true });
+      document.addEventListener("touchstart", initMusic, { once: true });
+    } else {
+      // Desktop / already granted autoplay
+      playMusic();
+    }
   } else {
-    music.play();
-    btn.textContent = "❚❚";
-    startHeartbeat();
+    // Not playing yet → wait for first gesture
+    document.addEventListener("click", initMusic, { once: true });
+    document.addEventListener("touchstart", initMusic, { once: true });
   }
-  isPlaying = !isPlaying;
 });
 
 
