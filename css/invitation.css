@@ -936,8 +936,29 @@ iframe {
 .arc-gallery {
   background: linear-gradient(180deg, #654321, #55381c);
   padding: 80px 20px;
+
   display: flex;
-  justify-content: center;
+  flex-direction: column;   
+  align-items: center;     
+  text-align: center;       
+}
+.arc-text {
+  margin-bottom: 40px;
+}
+
+.wedding-date {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  letter-spacing: 2px;
+  line-height: 1.6;
+  color: #f7f2f4;  
+}
+
+.wedding-message {
+  margin-top: 15px;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: #f0e6dc; 
 }
 
 .gallery-wrapper {
