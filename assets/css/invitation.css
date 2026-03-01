@@ -108,67 +108,58 @@ nav a:hover {
 
 /* ---------- HERO ---------- */
 .hero {
-  margin-top: var(--nav-height);
-  height: calc(100vh - var(--nav-height));
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
   position: relative;
-  background-size: cover;
-  background-position: center;
-  animation: heroSlideshow 18s infinite ease-in-out;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
   padding-top: 80px;
 }
 
-@keyframes heroSlideshow {
-  0% {
-    background-image: url('../../pictures/13.jpg');
-  }
+.slides {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
 
-  33% {
-    background-image: url('../../pictures/7.jfif');
-  }
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-position: center 20%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
 
-  66% {
-    background-image: url('../../pictures/9.jfif');
-  }
-
-  100% {
-    background-image: url('../../pictures/11.jfif');
-  }
+.slide.active {
+  opacity: 1;
 }
 
 .hero-overlay {
-  margin-top: 300px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
 
-.hero-overlay {
-  padding: 1rem 2rem;
-  border-radius: 16px;
-  color: #ffffff;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+.hero-content {
+  position: absolute;
+  bottom: 50px; 
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: #fff;
+  z-index: 2; 
+}
+.hero-content {
+  text-shadow: 0 4px 15px rgba(0,0,0,0.8);
 }
 
-.hero h1 {
-  font-family: "Great Vibes", cursive;
-  font-weight: lighter;
-  font-size: 72px;
-  letter-spacing: 2px;
-  margin-bottom: 20px;
-  color: #ffffff;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-}
-
-.hero h1 .amp {
-  margin: 0 24px;
-  display: inline-block;
-}
-
-.hero p {
-  font-family: "Playfair Display", serif;
-  font-size: 20px;
-}
+.hero h1 { font-family: "Great Vibes", cursive; font-size:64px; margin-bottom:15px; } 
+.hero p { font-family: "Playfair Display", serif; font-size:20px; }
 
 /* ---------- SECTION ---------- */
 .section {
@@ -269,6 +260,108 @@ nav a:hover {
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
 }
 
+/* Gallery grid */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 15px;
+  justify-items: center;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+/* Lightbox */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox-content {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+}
+
+.lightbox .close {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  font-size: 2.5rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Lightbox arrows */
+.lightbox .arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 3rem;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+  padding: 0 15px;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.lightbox .arrow:hover {
+  opacity: 1;
+}
+
+.lightbox .arrow.left { left: 20px; }
+.lightbox .arrow.right { right: 20px; }
+
+
+/* Remove grab cursor to prevent dragging */
+.gallery1,
+.gallery2 {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+  overflow-x: hidden; /* prevent dragging */
+  overflow-y: hidden;
+  width: 100%;
+  box-sizing: border-box;
+  cursor: pointer; /* no grab cursor */
+}
+
+.gallery1 img,
+.gallery2 img {
+  flex: 0 0 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 14px;
+  user-select: none;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.gallery1 img:hover,
+.gallery2 img:hover {
+  transform: scale(1.05) rotate(-1deg);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+}
 /* Responsive */
 @media(max-width:768px) {
   .gallery2 img {
@@ -760,6 +853,28 @@ iframe {
   margin-bottom: 25px;
 }
 
+.map-container {
+  max-width: 850px;
+  margin: 0 auto;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 380px;
+  border: none;
+}
+
+.pin-location {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  opacity: 0.9;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
 .direction-btn {
   display: inline-block;
   padding: 12px 28px;
@@ -777,16 +892,73 @@ iframe {
   transform: translateY(-2px);
 }
 
-.map-container {
-  max-width: 850px;
-  margin: 0 auto;
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+.click-hint {
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+  opacity: 0.8;
+  color: #f7f2f4;
+  cursor: default;
 }
 
-.map-container iframe {
+.social-icons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+}
+
+
+.social-icons a {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #f4ede4;
+  color: #8a6f4d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.social-icons a:hover {
+  background: #d4af7f;
+  color: #ffffff;
+  transform: translateY(-4px);
+}
+
+
+/* ---------- ARC FULL IMAGE SECTION ---------- */
+
+.arc-gallery {
+  background: linear-gradient(180deg, #654321, #55381c);
+  padding: 80px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.gallery-wrapper {
   width: 100%;
-  height: 380px;
-  border: none;
+  display: flex;
+  justify-content: center;
+}
+
+.arc-image {
+  width: 100%;
+  max-width: 1100px;
+  /* controls desktop size */
+  display: flex;
+  justify-content: center;
+}
+
+.arc-image img {
+  width: 100%;
+  height: auto;
+  /* VERY IMPORTANT */
+  display: block;
+  object-fit: contain;
+  /* prevents cropping */
 }

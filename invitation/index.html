@@ -11,6 +11,8 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;500;600&display=swap"
     rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 
 </head>
 
@@ -23,6 +25,7 @@
       <div class='logo'><img src="../image/logo.png" alt="April & Howell Logo"></div>
       <div class="menu-icon" id="menu-icon">&#9776;</div>
       <nav id="nav-links">
+        <a href='#home'>Home</a>
         <a href='#details'>Details</a>
         <a href='#entourage'>Entourage</a>
         <a href='#countdown'>Countdown</a>
@@ -32,15 +35,31 @@
       </nav>
     </div>
   </header>
-  <section class="hero">
-    <div class="hero-overlay">
-      <h1>
-        Howell <span class="amp">&</span> April
-      </h1>
 
-      <p>April 05, 2026 • 3:00 PM</p>
+  <section class="hero">
+    <div class="slides">
+      <div class="slide active" style="background-image: url('../pictures/header/3.jpg');"></div> 
+      <div class="slide" style="background-image: url('../pictures/header/4.png');"></div>
+      <div class="slide" style="background-image: url('../pictures/header/6.jpg');"></div>
+      <div class="slide" style="background-image: url('../pictures/header/5.jpg');"></div>
+    </div>
+  
+    <div class="hero-overlay"></div>
+  
+    <div class="hero-content">
+      <h1>Howell & April</h1>
+      <p>We Are Getting Married</p>
     </div>
   </section>
+
+  <section class="arc-gallery"> 
+    <div class="gallery-wrapper">
+      <div class="arc-image">
+        <img src="../pictures/arc-image.png" alt="Couple main">
+      </div>
+    </div>
+  </section>
+  
 
   <section id="details" class="section details-section">
     <div class="details-card">
@@ -91,10 +110,9 @@
 
           <h3 class="details-title">Gift Guide</h3>
           <p class="details-text">
-            Our lives are graced with blessings bright,<br>
-            your presence and prayers our true delight.<br>
-            Yet should you wish to gift us more,<br>
-            Monetary offering we should adore.
+            Our lives are graced with blessings bright, your presence and 
+            prayers our true delight. But if you were thinking of 
+            washing machine or a fridge, cash would be much easier to carry.
           </p>
 
           <h3 class="details-title">With Respect</h3>
@@ -110,7 +128,18 @@
             Help us document our special day using our hashtag<br>
             <strong>#AprilSealedLoveTooWell</strong>
           </p>
-
+ <!-- Social Icons -->
+ <div class="social-icons">
+  <a href="https://instagram.com/yourusername" target="_blank">
+    <i class="fab fa-instagram"></i>
+  </a>
+  <a href="https://facebook.com/yourusername" target="_blank">
+    <i class="fab fa-facebook-f"></i>
+  </a>
+  <a href="https://tiktok.com/@yourusername" target="_blank">
+    <i class="fab fa-tiktok"></i>
+  </a>
+</div>
         </div>
       </div>
 
@@ -196,10 +225,10 @@
             Mr. Moises Cammagay<br>
             Mr. Tomy Tabbu<br>
             Mr. Lauriano Tabbu<br>
-            Slot 1<br>
+            Mr. Jose Dugayo<br>
             Mr. Fred Moscoso<br>
             Mr. Ruel Aspera<br>
-            Mr. Mito Tabbu
+            Mr. Danilo Del Monte
           </p>
         </div>
       </div>
@@ -297,23 +326,18 @@
       <span class="flower">❀</span>
     </div>
     <div class='gallery1'>
-      <img src='../pictures/1.jfif'>
-      <img src='../pictures/2.jfif'>
-      <img src='../pictures/3.jfif'>
-      <img src='../pictures/4.jfif'>
-      <img src='../pictures/5.jfif'>
-      <img src='../pictures/6.jfif'>
-      <img src='../pictures/7.jfif'>
-      <img src='../pictures/8.jfif'>
-      <img src='../pictures/9.jfif'>
-      <img src='../pictures/10.jfif'>
-      <img src='../pictures/11.jfif'>
-      <img src='../pictures/12.jfif'>
+      <img src='../pictures/prenup/9.jpg'>
+      <img src='../pictures/prenup/4.png'>
+      <img src='../pictures/prenup/6.jpg'>
+      <img src='../pictures/prenup/8.jpg'>
+      <img src='../pictures/prenup/10.jpg'>
+      <img src='../pictures/prenup/7.jpg'>
+      <img src='../pictures/prenup/3.jpg'>
+      <img src='../pictures/prenup/5.jpg'>
     </div>
 
     <div class='gallery2'>
       <img src='../pictures/1.jfif'>
-      <img src='../pictures/2.jfif'>
       <img src='../pictures/3.jfif'>
       <img src='../pictures/4.jfif'>
       <img src='../pictures/5.jfif'>
@@ -326,26 +350,44 @@
       <img src='../pictures/12.jfif'>
     </div>
   </section>
+<!-- Lightbox Overlay -->
+<div id="lightbox" class="lightbox">
+  <span class="close">&times;</span>
+  <img class="lightbox-content" id="lightbox-img">
+  <div class="arrow left">&lt;</div>
+  <div class="arrow right">&gt;</div>
+</div>
 
   <section id="location" class="section location-section">
     <h2 class="section-title">Our Wedding Venue</h2>
-
-    <p class="venue-name">We Gather Events Place</p>
-
+  
+    <p class="venue-name">We Gather Events</p>
+  
     <p class="venue-address">
       976 Capt. F. S. Samano St.<br>
-      Camarin, Caloocan City<br>
-      Metro Manila 1400
+      Camarin, Caloocan City, Metro Manila 1400
     </p>
-
-    <a href="https://maps.google.com/?q=We+Gather+Events+Place+Camarin+Caloocan" target="_blank" class="direction-btn">
+  
+    <p class="pin-location">
+      <b>📍 Pin Location:</b> We Gather Events Place
+    </p>
+  
+    <!-- Clickable hint -->
+    <p class="click-hint">
+      <u>Click the "Get Directions" button below to re-direct on Google Maps</u>
+    </p>
+  
+    <a href="https://www.google.com/maps/dir/?api=1&destination=We+Gather+Events+Place+Camarin+Caloocan+Metro+Manila" 
+       target="_blank" 
+       class="direction-btn">
       Get Directions
     </a>
-
+  
     <div class="map-container">
       <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3858.1335535684225!2d121.04451389999998!3d14.761504799999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b1637042ef3f%3A0x832d79f906415baf!2sWe%20Gather%20Events%20Place%20Camarin-Caloocan!5e0!3m2!1sen!2sph!4v1769916423234!5m2!1sen!2sph"
-        allowfullscreen loading="lazy">
+        allowfullscreen 
+        loading="lazy">
       </iframe>
     </div>
   </section>
@@ -360,7 +402,7 @@
 
       <p class="rsvp-text">
         We have reserved a seat for you.<br>
-        The favor of your reply is requested on or before <strong>April 05, 2026</strong>.<br><br>
+        The favor of your reply is requested on or before <strong>April 01, 2026</strong>.<br><br>
         Please confirm your attendance by clicking the button below.
       </p>
       <a href="https://docs.google.com/forms/d/e/1FAIpQLSc0EL7rPuFEVBi0MWSeZKaLJclQtnp5Rl8E5Qg2m7PcorsAFA/viewform?embedded=true"
@@ -379,10 +421,10 @@
 
 
   <footer>All rights reserved. Copyright © 2026. <br>
-    Photography by <a href="https://www.facebook.com/profile.php?id=100088531450136#"
-      target="_blank" class="george">George</a> and <a href="https://www.facebook.com/ihkaMarc"
-      target="_blank" class="george">Marc Gerald</a><br>
-      Website Development by Howell</footer>
+    Website Development by Howell<br>
+    Photography by <a href="https://www.facebook.com/AletaPhotographyStudio"
+      target="_blank" class="george">Aleta</a>
+      </footer>
   <script src='../assets/js/invitation.min.js'></script>
 </body>
 
