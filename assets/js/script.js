@@ -19,7 +19,7 @@ envelope.addEventListener("click", () => {
   localStorage.setItem("envelopeOpened", "true");
 
   setTimeout(() => {
-    window.location.href = "invitation/";
+    window.location.href = "/invitation/";
   }, 2500);
 });
 
