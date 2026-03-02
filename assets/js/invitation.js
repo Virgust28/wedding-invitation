@@ -1,5 +1,5 @@
 if (localStorage.getItem("envelopeOpened") !== "true") {
-  window.location.href = "../index.html"; 
+  window.location.href = "../"; 
 }
 
 localStorage.removeItem("envelopeOpened");
@@ -271,3 +271,4 @@ autoScroll2();
 document.querySelector('.arrow.left').addEventListener('click', showPrev);
 
 document.querySelector('.arrow.right').addEventListener('click', showNext);
+
