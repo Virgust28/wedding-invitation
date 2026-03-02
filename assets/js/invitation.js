@@ -43,7 +43,7 @@ window.addEventListener("resize", () => {
 });
 
 // Countdown
-const date = new Date("April 05, 2026 00:00:00").getTime();
+const date = new Date("April 05, 2026 15:00:00").getTime();
 setInterval(()=>{
   const now=new Date().getTime();
   const diff=date-now;
@@ -269,4 +269,5 @@ function autoScroll2() {
 autoScroll2();
 
 document.querySelector('.arrow.left').addEventListener('click', showPrev);
+
 document.querySelector('.arrow.right').addEventListener('click', showNext);
