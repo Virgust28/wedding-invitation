@@ -953,7 +953,6 @@ iframe {
   line-height: 1.6;
   color: #f7f2f4;  
 }
-
 .wedding-date2 {
   font-family: 'Playfair Display', serif;
   font-size: 1.5rem;
@@ -961,7 +960,6 @@ iframe {
   line-height: 1.6;
   color: #f7f2f4;  
 }
-
 .wedding-message {
   margin-top: 15px;
   font-size: 1.1rem;
@@ -1017,4 +1015,5 @@ iframe {
   .arc-image img {
     border-radius: 12px;
   }
+
 }
